@@ -6,6 +6,11 @@ namespace AuctionProject
     {
         static void Main() 
         {
+            using (AppContext applicationContext = new AppContext())
+            {
+                
+                applicationContext.Database.EnsureCreated();
+            }
             User user1 = new User();
             User user2 = new User();
             User user3 = new User();
