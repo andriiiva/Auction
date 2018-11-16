@@ -1,47 +1,46 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Linq;
 namespace AuctionProject
 {
-    class Program 
+    class Program
     {
-        static void Main() 
+        static void Main(string[] args)
         {
-            using (AppContext applicationContext = new AppContext())
+            using (ApplicationContext AuctionDB = new ApplicationContext())
             {
+                AuctionDB.Database.EnsureCreated();
+                User u1 = new User("u1");
+                AuctionDB.Users.Add(u1);
+                User u2 = new User("u2");
+                AuctionDB.Users.Add(u2);
+                User u3 = new User("u3");
+                AuctionDB.Users.Add(u3);
+                User u4 = new User("u4");
+                AuctionDB.Users.Add(u4);
+
+                Auction a1 = new Auction("a1");
+                AuctionDB.Auctions.Add(a1);
+
+                Lot lot1 = new Lot("lot1", a1, u2, 150);
+                Lot lot2 = new Lot("lot2", a1, u2, 150);
+                AuctionDB.Lots.Add(lot1);
+                AuctionDB.Lots.Add(lot2);
+
+                AuctionUsers AU1 = new AuctionUsers(a1,u1);
+                AuctionUsers AU2 = new AuctionUsers(a1,u3);
+                AuctionUsers AU3 = new AuctionUsers(a1,u4);
+                AuctionDB.AuctionUsers.Add(AU1);
+                AuctionDB.AuctionUsers.Add(AU2);
+                AuctionDB.AuctionUsers.Add(AU3);
                 
-                applicationContext.Database.EnsureCreated();
+                a1.StartAuction();
+
+                AuctionDB.SaveChanges();
+                //AutoBid abit = new AutoBid(u3, 200);
+                //lot1.AutoBids.Add(abit);
+
+
             }
-            User user1 = new User();
-            User user2 = new User();
-            User user3 = new User();
-            User user4 = new User();
-            Lot lot1 = new Lot(85);
-            Lot lot2 = new Lot(150);
-            
-            Auction auction1 = new Auction();
-
-            auction1.AddLot( lot1 );
-            auction1.AddLot( lot2 );
-            auction1.AddBidder( user1 );
-            auction1.AddBidder( user3 );
-            auction1.AddBidder( user4 );
-            
-            auction1.StartAuction();
-            for(int i = 1; i <= auction1.GetCountLots(); i++)
-            {
-                auction1.StartSellLot(i);
-                auction1.AutoBid(2, new AutoBid(user1, 2000));
-                auction1.MakeBid(2, user4, 172);
-                auction1.MakeBid(2, user3, 200);
-                auction1.MakeBid(2, user4, 252);
-                auction1.MakeBid(2, user3, 400);
-                auction1.MakeBid(2, user4, 666);
-                auction1.CloseSellLot(i);
-            }
-            auction1.CloseAuction();
-
-            Console.WriteLine(auction1.ShowLotList());
-
         }
     }
 }

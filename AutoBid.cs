@@ -1,14 +1,20 @@
 namespace AuctionProject
 {
-   class AutoBid
-   {
+    public class AutoBid
+    {
+        public int ID { get; private set; }
+        public int MaxPrice { get; private set; }
+        public Lot Lot { get; private set; }
         public User User { get; private set; }
-        public int Price { get; private set; }
 
-        public AutoBid(User user, int price)
+        public AutoBid()
         {
-            User = user;
-            Price = price;
         }
-   }
+
+        public AutoBid(User user, int maxprice)
+        {
+            this.User = user;
+            this.MaxPrice = maxprice;
+        }
+    }
 }

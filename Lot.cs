@@ -1,54 +1,55 @@
 using System;
 using System.Collections.Generic;
-namespace AuctionProject 
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace AuctionProject
 {
-    class Lot
+    public class Lot
     {
-        public int LotID { get; private set; }
-        public static int Count { get; private set; }
-        public bool onSale { get; private set; } = false;
-        public List<AutoBid> Autobid = new List<AutoBid>();
-        public Bid bid { get; private set; }
-        
-        public Lot(int price) 
+        public int ID { get; private set; }
+        public string Name { get; private set; }
+        public int StartPrice { get; private set; }
+        public Auction Auction { get; private set; }
+        public User User { get; private set; }
+        public List<Bid> Bids { get; private set; } = new List<Bid>();
+        public List<AutoBid> AutoBids { get; private set; } = new List<AutoBid>();
+
+        public Lot(string name, Auction auction, User user, int startprice)
         {
-            Count = Count + 1;
-            LotID = Count;
-            bid = new Bid(price);
+            this.Name = name;
+            this.Auction = auction;
+            this.User = user;
+            this.StartPrice = startprice;
         }
-        
-        public void ChangeBid(int userID, int newBid)
+        public Lot()
         {
-            bid.SetPrice(newBid);
-            bid.SetUser(userID);
+
         }
 
-        public bool isOnSale()
+        public void MakeBid(Bid bid)
         {
-            return onSale;
+            Bids.Add(bid);
+            CheckAutoBid();
         }
 
-        public void AddToSell()
+        public void AutoBid(AutoBid autobid)
         {
-            onSale = true;
+            AutoBids.Add(autobid);
         }
 
-        public void RemoveFromSell()
+        public void CheckAutoBid()
         {
-            onSale = false;
-        }
+            Bid lastbid = Bids.Last();
 
-        public AutoBid GetAutoBid()
-        {  
-            foreach(AutoBid ab in Autobid)
+            foreach(AutoBid ab in AutoBids)
             {
-                if (bid.isValidPrice(ab.Price))
+                if (lastbid.NextMinBid() <= ab.MaxPrice && ab.User.ID != lastbid.User.ID)
                 {
-                    return ab;
+                    MakeBid( new Bid(ab.User, lastbid.NextMinBid()) );
                 }
-            }
-            return null;
+            }           
         }
-
     }
 }

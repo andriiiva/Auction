@@ -1,9 +1,9 @@
 namespace AuctionProject
 {
-    enum AuctionStatus 
+    public enum AuctionStatus 
     {
-        NOTSTARTED,
-        STARTED,
-        CLOSED
+        NOTSTARTED = 0,
+        STARTED = 1,
+        CLOSED = 2
     }
 }
