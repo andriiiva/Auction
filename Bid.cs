@@ -1,26 +1,26 @@
 using System;
-namespace AuctionProject 
+namespace AuctionProject
 {
-    class Bid
+    public class Bid
     {
+        public int ID { get; private set; }
+        public User User { get; private set; }
         public int Price { get; private set; }
-        public int UserID { get; private set; }
-        public int Step { get; private set; }
-        
-        public Bid(int price)
+        public Lot Lot { get; private set; }
+
+
+        public Bid()
         {
-            Price = price;
-            SetStep(Price);
         }
-        
-        public void SetStep(int price)
+        public Bid(User user, int price)
         {
-            Step = CalculationStep(price);
+            this.User = user;
+            this.Price = price;
         }
-        
-        public int GetMinBid()
+
+        public int NextMinBid()
         {
-            return Price + Step;
+            return Price + CalculationStep(Price);
         }
 
         public int CalculationStep(int price)
@@ -41,21 +41,6 @@ namespace AuctionProject
             }
             return (int)step;
         }
-        
-        public bool isValidPrice(int price)
-        {
-            return price >= Price + Step;
-        }
-        
-        public void SetPrice(int price)
-        {
-            Price = price;
-        }
-        
-        public void SetUser(int userID)
-        {
-            UserID = userID;
-        }
-        
+
     }
 }
