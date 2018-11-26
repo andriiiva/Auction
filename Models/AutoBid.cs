@@ -1,4 +1,4 @@
-namespace AuctionProject
+namespace AuctionProject.Models
 {
     public class AutoBid
     {

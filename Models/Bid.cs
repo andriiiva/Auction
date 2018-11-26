@@ -1,20 +1,19 @@
 using System;
-namespace AuctionProject
+namespace AuctionProject.Models
 {
     public class Bid
     {
-        public int ID { get; private set; }
-        public User User { get; private set; }
-        public int Price { get; private set; }
-        public Lot Lot { get; private set; }
+        public int Id { get; set; }
+        public int Price { get; set; }
+        public int LotId { get; set; }
+        public Lot Lot { get; set; }
 
 
         public Bid()
         {
         }
-        public Bid(User user, int price)
+        public Bid(int price)
         {
-            this.User = user;
             this.Price = price;
         }
 

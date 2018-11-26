@@ -1,0 +1,70 @@
+<table class="table">
+    <thead>
+        <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var lot in ViewBag.lots)
+    {
+        <tr>
+            <td scope="row">@lot.ID</td>
+            <td><a href="lots/@lot.ID">@lot.Name</a></td>
+            <td>@lot.StartPrice</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<form onsubmit="addLot(event)">
+    <input name="Name" placeholder="Lot name">
+    <input name="StartPrice" placeholder="Lot price">
+    <button type="submit">Add lot</button>
+</form>
+
+<a href="../">Back</a>
+
+<script>
+
+    function addLot(e) {
+        e.preventDefault();
+        fetch('/lots', {
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                "Name": `${e.target["Name"].value}`,
+                "StartPrice": `${e.target["StartPrice"].value}`
+            })
+        })
+        .then(r => r.json())
+        .then(r => showLotNode(r))
+    }
+
+    function showLotNode(obj) {
+        var tbody = document.querySelector('tbody');
+
+        var tr = document.createElement('tr');
+        var td1 = document.createElement('td');
+        var td2 = document.createElement('td');
+        var td3 = document.createElement('td');
+        var a = document.createElement('a');
+        td2.appendChild(a);
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        tr.appendChild(td3);
+        tbody.appendChild(tr);
+
+        td1.innerHTML = obj.id;
+        td1.setAttribute("scope","row");
+        a.innerHTML = obj.name;
+        a.setAttribute("href","lots/" + obj.id);
+        td3.innerHTML = obj.startPrice;
+    }
+
+</script>
+

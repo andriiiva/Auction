@@ -1,0 +1,49 @@
+<form onsubmit="addBid(event)">
+    <input name="Price" placeholder="Lot bid">
+    <input type="hidden" name="LotId" value="@ViewBag.lot.ID">
+    <button type="submit">Add bid</button>
+</form>
+<div id="bids">
+    @foreach (var bid in ViewBag.bids)
+    {
+        <span>@bid.LotId, @bid.Id, @bid.Price</span>
+        <br>
+    }
+</div>
+@ViewBag.lot.Name
+<br>
+@ViewBag.lot.StartPrice
+<br>
+<a href="../lots">Back</a>
+
+<script>
+
+    function addBid(e) {
+        e.preventDefault();
+        fetch(`/lots/${e.target["LotId"].value}`, {
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                "Price": `${e.target["Price"].value}`
+            })
+        })
+        .then(r => r.json())
+        .then(showBidNode)
+    }
+
+    function showBidNode(obj) {
+        var div = document.querySelector('#bids');
+
+        var span = document.createElement('span');
+        span.innerHTML = obj.lotId + ", " + obj.id + ", " + obj.price;
+
+        var br = document.createElement('br');
+
+        div.appendChild(span);
+        div.appendChild(br);
+    }
+
+</script>
