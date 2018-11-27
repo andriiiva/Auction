@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Lot } from '../shared/lot';
 
 @Component({
   selector: 'app-auction',
@@ -8,9 +9,12 @@ import { Component } from '@angular/core';
 
 export class AuctionComponent {
 
+  lots: Lot[] = [];
+
   constructor() { }
 
-  ngOnInit() {
+  addLotToList(lot: Lot) {
+    this.lots.push(lot);
   }
 
 }

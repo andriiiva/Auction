@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-import { Lot } from '../auction/lot';
-import { NgForm } from '@angular/forms';
+import { Component, Output, EventEmitter } from '@angular/core';
+import { Lot } from '../shared/lot';
 
 @Component({
   selector: 'app-add-lot-form',
@@ -8,14 +7,13 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./add-lot-form.component.scss']
 })
 export class AddLotFormComponent {
-  
-  lots = [];
+
+  @Output() addLot = new EventEmitter();
 
   constructor() { }
 
-  onSubmit(f: NgForm) {
-    this.lots.push(new Lot(f.value.name, f.value.price));
+  onSubmit(event) {
+    this.addLot.emit(new Lot(event.value.name, event.value.price));
   }
 
-  get diagnostic() { return JSON.stringify(this.lots); }
 }

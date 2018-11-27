@@ -1,21 +1,13 @@
-<p>
-  add-lot-form works!
-</p>
-{{diagnostic}}
-<div *ngFor="let lot of lots">
-  <span>{{lot.name}}</span>
-  <span>{{lot.price}}</span>
-</div>
 <div>
     <form (ngSubmit)="onSubmit(AddLotForm)" #AddLotForm="ngForm">
       <div>
         <label for="name">Lot name</label>
-        <input type="text" name="name" ngModel>
+        <input type="text" [(ngModel)]="name" name="name">
       </div>
  
       <div>
         <label for="price">Lot price</label>
-        <input type="number" name="price" ngModel>
+        <input type="number" [(ngModel)]="price" name="price">
       </div>
  
       <button type="submit" >Add lot</button>
