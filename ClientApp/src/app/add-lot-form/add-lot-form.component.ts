@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { Lot } from '../shared/lot';
+import { Lot } from '../shared/lot.model';
 
 @Component({
   selector: 'app-add-lot-form',
@@ -13,7 +13,7 @@ export class AddLotFormComponent {
   constructor() { }
 
   onSubmit(event) {
-    this.addLot.emit(new Lot(event.value.name, event.value.price));
+    this.addLot.emit(event);
   }
 
 }

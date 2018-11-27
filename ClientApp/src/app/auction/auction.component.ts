@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { Lot } from '../shared/lot';
+import { Component, OnInit } from '@angular/core';
+import { Lot } from '../shared/lot.model';
+import { AuctionService } from '../auction.service';
 
 @Component({
   selector: 'app-auction',
@@ -7,14 +8,18 @@ import { Lot } from '../shared/lot';
   styleUrls: ['./auction.component.scss']
 })
 
-export class AuctionComponent {
+export class AuctionComponent implements OnInit {
 
   lots: Lot[] = [];
 
-  constructor() { }
+  constructor(private AucSer: AuctionService) { }
 
-  addLotToList(lot: Lot) {
-    this.lots.push(lot);
+  ngOnInit() {
+    this.AucSer.getLots().subscribe(data => console.log(data));
   }
+
+  addLotToList(event) {
+    this.lots.push({name: event.value.name, price: event.value.price} as Lot);
+  } 
 
 }
