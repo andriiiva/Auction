@@ -1,6 +1,6 @@
 export interface Lot {
     name: string;
-    price: number;
+    startPrice: number;
 }
 // export class Lot {
 //     name: string;

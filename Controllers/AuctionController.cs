@@ -22,5 +22,13 @@ namespace AuctionProject.Controllers
         {
             return _context.Lots.ToList();
         }
+
+        [HttpPost]
+        public ActionResult addLot([FromBody] Lot lot)
+        {
+            _context.Lots.Add(lot);
+            _context.SaveChanges();
+            return Ok(lot);
+        }
     }
 }

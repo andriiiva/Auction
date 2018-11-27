@@ -15,11 +15,11 @@ export class AuctionComponent implements OnInit {
   constructor(private AucSer: AuctionService) { }
 
   ngOnInit() {
-    this.AucSer.getLots().subscribe(data => console.log(data));
+    this.AucSer.getLots().subscribe(data => this.lots = data);
   }
 
   addLotToList(event) {
-    this.lots.push({name: event.value.name, price: event.value.price} as Lot);
+    this.AucSer.addLot({name: event.value.name, startPrice: event.value.startPrice} as Lot).subscribe();
   } 
 
 }

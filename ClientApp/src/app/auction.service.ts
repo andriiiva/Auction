@@ -13,4 +13,9 @@ export class AuctionService {
   getLots(): Observable<Lot[]> {
      return this.http.get<Lot[]>("api/auction");
   }
+
+  addLot(lot): Observable<Lot> {
+    return this.http.post<Lot>("api/auction", lot);
+  }
+
 }
