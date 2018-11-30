@@ -1,0 +1,13 @@
+<form *ngIf="showForm == true" (ngSubmit)="onSubmit(AddLotForm)" #AddLotForm="ngForm">
+  <button (click)="toggleDisplayForm()" type="submit" >Cancel</button>
+
+  <div>
+    <input type="text" [(ngModel)]="name" name="name" placeholder="Lot name">
+
+    <input type="number" [(ngModel)]="startPrice" name="startPrice" placeholder="Lot price">
+  </div>
+
+  <button type="submit" >Add</button>
+</form>
+
+<button *ngIf="showForm == false" (click)="toggleDisplayForm()" type="submit" >+ Lot</button>

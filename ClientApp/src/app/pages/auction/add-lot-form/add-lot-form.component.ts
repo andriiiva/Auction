@@ -1,5 +1,4 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { Lot } from '../shared/lot.model';
 
 @Component({
   selector: 'app-add-lot-form',
@@ -7,6 +6,7 @@ import { Lot } from '../shared/lot.model';
   styleUrls: ['./add-lot-form.component.scss']
 })
 export class AddLotFormComponent {
+  showForm = false;
 
   @Output() addLot = new EventEmitter();
 
@@ -14,6 +14,10 @@ export class AddLotFormComponent {
 
   onSubmit(event) {
     this.addLot.emit(event);
+  }
+
+  toggleDisplayForm() {
+    this.showForm = !this.showForm;
   }
 
 }

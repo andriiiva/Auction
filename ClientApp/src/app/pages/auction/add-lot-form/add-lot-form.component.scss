@@ -1,0 +1,19 @@
+:host {
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 10px;
+}
+
+form div {
+    display: inline-block;
+}
+
+form div input{
+    width: 150px;
+}
+
+button {
+    padding: 5px 15px;
+    border-radius: 5px;
+    outline: none;
+}

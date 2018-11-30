@@ -1,0 +1,25 @@
+:host {
+    display: block;
+    background-color: azure;
+    border-radius: 5px;
+    box-shadow: 2px -2px 15px 1px rgba(0,0,0,0.5);
+}
+
+nav {
+    flex-flow: row nowrap;
+    justify-content: center;
+}
+
+    nav a {
+        outline: none;
+        background-color: #d6d6d6;
+    }
+
+    nav a:not(:first-child) {
+        margin-left: 2px;
+    }
+
+    nav a:hover {
+        font-weight: 500;
+    }
+ 

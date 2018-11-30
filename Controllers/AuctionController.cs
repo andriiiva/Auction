@@ -30,5 +30,12 @@ namespace AuctionProject.Controllers
             _context.SaveChanges();
             return Ok(lot);
         }
+
+
+        [HttpGet("lot/{id}")]
+        public IActionResult Lot(int id) {
+            var lot = _context.Lots.Find(id);
+            return Ok(lot);
+        }
     }
 }
