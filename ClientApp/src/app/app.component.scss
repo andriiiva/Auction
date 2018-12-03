@@ -1,21 +1,29 @@
 .wrapper {
     margin: 15px auto 50px auto;
-    max-width: 900px;
-    padding: 2%;
+    max-width: 1200px;
 }
     header {
         margin-bottom: 10px;
+        margin-right: 0.5%;
+        margin-left: 0.5%;
     }
 
     #content {
         display: flex;
-        flex-flow: row nowrap;
+        flex-wrap: wrap;
         margin-bottom: 10px;
+        justify-content: space-around;
+    }
+
+    #content > * {
+        margin-right: 0.5%;
+        margin-left: 0.5%;
     }
 
         aside {
             flex: 1;
-            margin-right: 10px;
+            min-width: 300px;
+            width: 300px;
             margin-bottom: 10px;
         }
 
@@ -33,13 +41,20 @@
             }
 
     footer {
+        margin-right: 0.5%;
+        margin-left: 0.5%;
     }
 
     @media screen and (max-width: 480px) {
-    .wrapper {
-        min-width: 300px;
+    header, #content, footer {
+        margin-right: 0;
+        margin-left: 0;
     }
     
+    .wrapper {
+        min-width: 300px; 
+    }
+
         #content {
             flex-direction: column;
         }

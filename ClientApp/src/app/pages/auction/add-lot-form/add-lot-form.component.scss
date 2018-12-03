@@ -1,19 +1,17 @@
-:host {
-    display: flex;
-    justify-content: flex-end;
-    padding-bottom: 10px;
+:host > * {
+    margin-top: 10px;
 }
 
-form div {
-    display: inline-block;
-}
-
-form div input{
-    width: 150px;
-}
-
-button {
-    padding: 5px 15px;
+:host > button {
     border-radius: 5px;
     outline: none;
 }
+
+// form div {
+//     display: inline-block;
+// }
+
+// form div input{
+//     width: 150px;
+// }
+
