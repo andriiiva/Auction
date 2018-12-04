@@ -1,14 +1,25 @@
-<form *ngIf="showForm == true" (ngSubmit)="onSubmit(AddLotForm)" #AddLotForm="ngForm">
-  <div class="form-row">
-    <div class="col">
-      <input type="text" class="form-control" [(ngModel)]="name" name="name" placeholder="Lot name">
-    </div>
-    <div class="col">
-      <input type="text" class="form-control" [(ngModel)]="startPrice" name="startPrice" placeholder="Lot price">
-    </div>
-  </div>
-  <button type="button" class="btn btn-secondary" >Add</button>
-  <button (click)="toggleDisplayForm()" type="button" class="btn btn-secondary" >Cancel</button>
-</form>
-
 <button *ngIf="showForm == false" (click)="toggleDisplayForm()" type="button" class="btn btn-secondary" >+ Lot</button>
+<button *ngIf="showForm == true" (click)="toggleDisplayForm()" type="button" class="btn btn-secondary" >Cancel</button>
+
+<div class="container mt-2">
+  <div class="row justify-content-center align-items-center">
+    <form *ngIf="showForm == true" (ngSubmit)="onSubmit(AddLotForm)" #AddLotForm="ngForm">
+      <div class="form-row">
+        <div class="col">
+          <input type="text" class="form-control" [(ngModel)]="name" name="name" placeholder="Lot name">
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" [(ngModel)]="startPrice" name="startPrice" placeholder="Lot price">
+        </div>
+      </div>
+      <div class="form-row mt-2">
+        <div class="col">
+          <input type="text" class="form-control" [(ngModel)]="description" name="description" placeholder="Lot description">
+        </div>
+      </div>
+      <div class="row justify-content-center align-items-center mt-2">
+          <button type="button" class="btn btn-secondary mr-2" >Add</button>
+      </div>
+    </form>
+  </div>
+</div>

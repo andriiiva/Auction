@@ -6,10 +6,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  
-  constructor() { }
+  navMenu: boolean = false;
 
-  ngOnInit() {
+  toggleBurger() {
+    this.navMenu = !this.navMenu;
   }
 
+  constructor() {
+ 
+   }
+
+  resizeWindow(e) {
+    if (e.target.innerWidth > 748 && this.navMenu == true) {
+      this.toggleBurger();
+    }
+  }
+  
+  ngOnInit() {
+  
+  }
 }

@@ -5,21 +5,96 @@
     box-shadow: 2px -2px 15px 1px rgba(0,0,0,0.5);
 }
 
+.active {
+    background-color:  rgba(0, 0, 0, 0.1);
+    font-weight: 600;
+}
+
+.active:hover {
+    color: #4161ff;
+}
+
 nav {
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     justify-content: center;
+    position: relative;
+    background-color: #d6d6d6;
+    border-radius: 5px;
 }
 
     nav a {
         outline: none;
-        background-color: #d6d6d6;
-    }
-
-    nav a:not(:first-child) {
-        margin-left: 2px;
-    }
-
-    nav a:hover {
-        font-weight: 500;
     }
  
+nav a:last-child {
+    display: none;
+}
+
+nav span {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 35px;
+    position: absolute;
+    top: 35px;
+    background-color: #d6d6d6;
+    border-radius: 0 0 15px 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+    width: 100%;
+}
+
+nav span a {
+    align-self: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    width: 80%;
+    text-align: center;
+}
+
+@media screen and (max-width: 748px) {
+    .active {
+        background-color:  rgba(0, 0, 0, 0);
+    }
+
+    nav {
+        flex-flow: column;
+    }
+
+    nav > a:not(:first-child) {
+        display: none;
+    }
+
+    nav > a:first-child {
+        align-self: flex-start;
+    }
+
+    nav > a:last-child {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        position: absolute;
+        right: 0;
+        top: 0;
+        margin: 5px;
+        width: 35px;
+        height: 30px;
+    }
+
+    nav > a:last-child:hover {
+        cursor: pointer;
+        div {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+    }
+
+    nav > a:last-child > div {
+        width: 90%;
+        height: 3px;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+}
+
+@media screen and (min-width: 748px) {
+    nav span a {
+        display: none;
+    }
+}

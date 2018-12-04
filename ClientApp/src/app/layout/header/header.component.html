@@ -1,4 +1,23 @@
-<nav class="nav">
-    <a class="nav-link" [routerLink]="['']">Home</a>
-    <a class="nav-link" [routerLink]="['auction']">Auction</a>
+<nav class="nav" (window:resize)="resizeWindow($event)">
+    <a class="nav-link" [routerLink]="['/']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
+        true}">Home</a>
+    <a class="nav-link" [routerLink]="['auction']" [routerLinkActive]="['active']">Auction</a>
+    <a class="nav-link" [routerLink]="['page1']" [routerLinkActive]="['active']">page1</a>
+    <a class="nav-link" [routerLink]="['page2']" [routerLinkActive]="['active']">page2</a>
+    <a class="nav-link" [routerLink]="['page3']" [routerLinkActive]="['active']">page3</a>
+    <a class="nav-link" [routerLink]="['page4']" [routerLinkActive]="['active']">page4</a>
+    <a class="nav-link" [routerLink]="['page5']" [routerLinkActive]="['active']">page5</a>
+    <span *ngIf="navMenu">
+        <a class="nav-link" [routerLink]="['auction']" [routerLinkActive]="['active']">Auction</a>
+        <a class="nav-link" [routerLink]="['page1']" [routerLinkActive]="['active']">page1</a>
+        <a class="nav-link" [routerLink]="['page2']" [routerLinkActive]="['active']">page2</a>
+        <a class="nav-link" [routerLink]="['page3']" [routerLinkActive]="['active']">page3</a>
+        <a class="nav-link" [routerLink]="['page4']" [routerLinkActive]="['active']">page4</a>
+        <a class="nav-link" [routerLink]="['page5']" [routerLinkActive]="['active']">page5</a>        
+    </span>
+    <a (click)="toggleBurger()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </a>
 </nav>

@@ -8,17 +8,13 @@ import { AuctionService } from '../../auction.service';
   styleUrls: ['./auction.component.scss']
 })
 
-export class AuctionComponent implements OnInit, OnChanges {
+export class AuctionComponent implements OnInit {
 
   lots: Lot[] = [];
 
   constructor(private AucSer: AuctionService) { }
 
   ngOnInit() {
-    this.AucSer.getLots().subscribe(data => this.lots = data);
-  }
-
-  ngOnChanges() {
     this.AucSer.getLots().subscribe(data => this.lots = data);
   }
 

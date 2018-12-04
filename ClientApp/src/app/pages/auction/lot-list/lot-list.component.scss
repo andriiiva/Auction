@@ -11,8 +11,8 @@
     overflow: hidden;
 }
 
-.lot-item:not(:first-child) {
-    margin-top: 10px;
+.lot-item {
+    margin-bottom: 10px;
 }
 
 .lot-item img {
@@ -26,6 +26,7 @@
 .lot-details {
     padding: 15px;
     display: flex;
+    flex-wrap: wrap;
     flex: 2;
 }
 
@@ -78,3 +79,16 @@ button {
     outline: none;
 }
 
+// PAGINATION
+
+.btn-group {
+    margin-bottom: 10px;
+}
+
+.btn-group .active {
+    cursor: default;
+}
+
+.btn-group .active {
+    cursor: default;
+}
