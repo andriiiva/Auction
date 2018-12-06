@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LotPageComponent } from './lot-page.component';
+import { LotComponent } from './lot.component';
 
-describe('LotPageComponent', () => {
-  let component: LotPageComponent;
-  let fixture: ComponentFixture<LotPageComponent>;
+describe('LotComponent', () => {
+  let component: LotComponent;
+  let fixture: ComponentFixture<LotComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LotPageComponent ]
+      declarations: [ LotComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LotPageComponent);
+    fixture = TestBed.createComponent(LotComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

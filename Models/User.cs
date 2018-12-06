@@ -13,7 +13,10 @@ namespace AuctionProject.Models
         }
         public int ID { get; private set; }
         public string Name { get; private set; }
+        // public List<Lot> lots { get; set; }
         public List<AutoBid> AutoBids { get; set; }
+        public List<Lot> Lots { get; set; }
+        public List<Bid> Bids { get; set; }
 
         public User()
         {

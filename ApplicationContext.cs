@@ -20,16 +20,27 @@ namespace AuctionProject
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Lot>()
+                .HasOne(l => l.User)
+                .WithMany(u => u.Lots)
+                .HasForeignKey(l => l.UserId);
+
+            modelBuilder.Entity<Bid>()
+                .HasOne(e => e.User)
+                .WithMany(e => e.Bids);
+
+            //test
+
+            modelBuilder.Entity<Lot>()
                 .HasMany(bc => bc.Bids)
                 .WithOne(e => e.Lot);
 
-            modelBuilder.Entity<Lot>()
-                .HasMany(bc => bc.AutoBids)
-                .WithOne(e => e.Lot);
+            // modelBuilder.Entity<Lot>()
+            //     .HasMany(bc => bc.AutoBids)
+            //     .WithOne(e => e.Lot);
 
-            modelBuilder.Entity<User>()
-                .HasMany(c => c.AutoBids)
-                .WithOne(e => e.User);
+            // modelBuilder.Entity<User>()
+            //     .HasMany(c => c.AutoBids)
+            //     .WithOne(e => e.User);
         }
 
     }

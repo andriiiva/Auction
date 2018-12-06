@@ -1,4 +1,42 @@
+@import "../../../../styles.scss";
+
 :host > button {
     border-radius: 5px;
     float: right;
+}
+
+:host > div {
+    @extend .container, .mt-2;
+    > div {
+        @extend .row, .justify-content-center, .align-items-center;
+        > form {
+            > div:nth-child(1) {
+                @extend .form-row;
+            }
+            > div:nth-child(2) {
+                @extend .form-row, .mt-2;
+            }
+            > div:nth-child(3) {
+                @extend .form-row, .mt-2;
+            }
+            > div:nth-child(4) {
+                @extend .row, .justify-content-center, .align-items-center, .mt-2;
+                > button {
+                    @extend .mb-1;
+                }
+            }
+            > div {
+                > div {
+                    @extend .col;
+                    > input {
+                        @extend .form-control;
+                    }
+                }
+            }
+        }
+    }
+}
+
+button {
+    @extend .btn, .btn-secondary;
 }

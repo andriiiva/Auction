@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using AuctionProject.Models;
 using System;
+using Microsoft.EntityFrameworkCore;
 
 namespace AuctionProject.Controllers
 {
@@ -20,7 +21,7 @@ namespace AuctionProject.Controllers
         [HttpGet]
         public List<Lot> getLots()
         {
-            return _context.Lots.ToList();
+            return _context.Lots.Include(l => l.User).ToList();
         }
 
         [HttpPost]

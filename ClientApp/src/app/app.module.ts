@@ -8,16 +8,16 @@ import { HomeComponent } from './pages/home/home.component';
 import { AuctionComponent } from './pages/auction/auction.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LotListComponent } from './pages/auction/lot-list/lot-list.component';
-import { LotPageComponent } from './pages/auction/lot-page/lot-page.component';
 import { AddLotFormComponent } from './pages/auction/add-lot-form/add-lot-form.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { ExtraContentComponent } from './layout/extra-content/extra-content.component';
+import { LotComponent } from './pages/lot/lot.component';
 
 const appRoutes : Routes = [
   { path : "", component : HomeComponent },
   { path : "auction", component : AuctionComponent },
-  { path : "auction/lot/:id", component : LotPageComponent }
+  { path : "auction/lot/:id", component : LotComponent }
   // { path : "", component : AuctionComponent, data: {hideSidebar: true} },
   // { path : "", component : AuctionComponent },
   // { path : "auction/lot/:id", component : LotPageComponent }
@@ -31,10 +31,10 @@ const appRoutes : Routes = [
     AuctionComponent,
     AddLotFormComponent,
     LotListComponent,
-    LotPageComponent,
     SidebarComponent,
     FooterComponent,
     ExtraContentComponent,
+    LotComponent,
   ],
   imports: [
     BrowserModule,

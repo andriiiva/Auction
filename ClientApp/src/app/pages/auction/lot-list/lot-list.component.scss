@@ -81,14 +81,15 @@ button {
 
 // PAGINATION
 
-.btn-group {
-    margin-bottom: 10px;
-}
-
 .btn-group .active {
     cursor: default;
 }
 
 .btn-group .active {
     cursor: default;
+}
+
+.nonPaginat {
+    height: 35px;
+    visibility: hidden;
 }

@@ -7,6 +7,10 @@ import { Component, Output, EventEmitter } from '@angular/core';
 })
 export class AddLotFormComponent {
   showForm = false;
+  name: string;
+  startPrice: number;
+  description: string;
+  userId: number;
 
   @Output() addLot = new EventEmitter();
 
@@ -14,6 +18,11 @@ export class AddLotFormComponent {
 
   onSubmit(event) {
     this.addLot.emit(event);
+    this.name = '';
+    this.startPrice = null;
+    this.description = '';
+    this.userId = null;
+    this.toggleDisplayForm();
   }
 
   toggleDisplayForm() {

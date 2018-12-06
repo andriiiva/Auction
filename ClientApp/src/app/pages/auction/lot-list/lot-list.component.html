@@ -12,45 +12,45 @@
       <div class="lot-details-left">
           <section>
             <span>{{lot.name}}</span>
-            <span>Ieta samiy kryto iy krytoi lotik. DA!!!ssss i lotik. DA!!!sssss</span>
+            <span>{{lot.description}}</span>
           </section>
-          <span>by USERNAMEssssssssssssss</span>
+          <span>by {{lot.user.name}}</span>
         </div>
         <div class="lot-details-right">
           <div>
             <span>Price:</span>
             <span>{{lot.startPrice}}</span>
           </div>
-          <button type="button" class="btn btn-secondary">Place a bet</button>
+          <button type="button" class="btn btn-secondary" [routerLink]="[ '/auction/lot/', lot.id ]">Place a bet</button>
         </div>
     </div>
   </div>
 </div>
 
-
-  <div class="btn-group" role="group" aria-label="Basic example">
-    <button class="btn btn-secondary" *ngIf="pageNow > 2" (click)="this.pageNow = 1; pagination()">
-        1
-    </button>
-    <button class="btn btn-outline-secondary disabled" *ngIf="pageNow > 2">
-        ...
-    </button>
-    <button class="btn btn-secondary" *ngIf="pageNow > 1" (click)="this.pageNow = this.pageNow - 1; pagination()">
-      {{pageNow - 1}}
-    </button>
-    <button class="btn btn-secondary active" >
-      {{pageNow}}
-    </button>
-    <button class="btn btn-secondary" *ngIf="pageNow < pagesCount" (click)="this.pageNow = this.pageNow + 1; pagination()">
-      {{pageNow + 1}}
-    </button>
-    <button class="btn btn-outline-secondary disabled" *ngIf="pageNow <= pagesCount - 2">
-        ...
-    </button>
-    <button class="btn btn-secondary" *ngIf="pageNow <= pagesCount - 2" (click)="this.pageNow = this.pagesCount; pagination()">
-      {{pagesCount}}
-    </button>
-  </div>
+<div class="btn-group" role="group" aria-label="Basic example" *ngIf="pagesCount != 1">
+  <button class="btn btn-secondary" *ngIf="pageNow > 2" (click)="this.pageNow = 1; pagination()">
+      1
+  </button>
+  <button class="btn btn-outline-secondary disabled" *ngIf="pageNow > 2">
+      ...
+  </button>
+  <button class="btn btn-secondary" *ngIf="pageNow > 1" (click)="this.pageNow = this.pageNow - 1; pagination()">
+    {{pageNow - 1}}
+  </button>
+  <button class="btn btn-secondary active" >
+    {{pageNow}}
+  </button>
+  <button class="btn btn-secondary" *ngIf="pageNow < pagesCount" (click)="this.pageNow = this.pageNow + 1; pagination()">
+    {{pageNow + 1}}
+  </button>
+  <button class="btn btn-outline-secondary disabled" *ngIf="pageNow <= pagesCount - 2">
+      ...
+  </button>
+  <button class="btn btn-secondary" *ngIf="pageNow <= pagesCount - 2" (click)="this.pageNow = this.pagesCount; pagination()">
+    {{pagesCount}}
+  </button>
+</div>
+<button class="nonPaginat" *ngIf="pagesCount == 1"></button>
 
   
   

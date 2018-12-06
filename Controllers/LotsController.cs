@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using AuctionProject.Models;
 using System;
+using Microsoft.EntityFrameworkCore;
 
 namespace AuctionProject.Controllers
 {
@@ -20,13 +21,13 @@ namespace AuctionProject.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            ViewBag.lots = _context.Lots.ToList();
+            ViewBag.lots = _context.Lots.Include(l => l.User).ToList();
             return View();
         }
 
         [HttpGet("{id}")]
         public IActionResult Lot(int id) {
-            ViewBag.lot = _context.Lots.Find(id);
+            ViewBag.lot = _context.Lots.Include(l => l.User).SingleOrDefault(l => l.Id == id);
             ViewBag.bids = _context.Bids.Where(li => li.LotId == id);
             return View();
         }

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Lot } from '../../shared/lot.model';
 import { AuctionService } from '../../auction.service';
 
@@ -8,17 +8,21 @@ import { AuctionService } from '../../auction.service';
   styleUrls: ['./auction.component.scss']
 })
 
-export class AuctionComponent implements OnInit {
+export class AuctionComponent implements OnInit{
 
   lots: Lot[] = [];
 
   constructor(private AucSer: AuctionService) { }
 
   ngOnInit() {
-    this.AucSer.getLots().subscribe(data => this.lots = data);
+    this.AucSer.getLots().subscribe(data => {this.lots = data; this.lots.reverse()});
   }
 
   addLotToList(event) {
-    this.AucSer.addLot({name: event.value.name, startPrice: event.value.startPrice} as Lot).subscribe(a => this.lots.push(a));
+    this.AucSer.addLot({name: event.value.name, 
+                        startPrice: event.value.startPrice, 
+                        description: event.value.description,
+                        userId: event.value.userId} as Lot).subscribe(a =>  {this.lots.unshift(a); this.lots = this.lots.slice()});
   } 
+
 }

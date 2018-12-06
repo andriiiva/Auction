@@ -12,14 +12,15 @@ export class LotListComponent implements OnInit, OnChanges {
   pageNow: number = 1;
   lotsOnPageCount: number = 3;
   lotsOnPage: Lot[] = [];
-
   constructor() { }
 
   pagination() {
     this.lotsOnPage = [];
     for (let i = 0; i < this.lotsOnPageCount; i++) {
       let curr = this.lotsOnPageCount * (this.pageNow - 1) + i;
-      this.lotsOnPage.push(this.lots[curr]);
+      if (curr < this.lots.length) {
+        this.lotsOnPage.push(this.lots[curr]);
+      }
     }
   }
 
@@ -32,6 +33,7 @@ export class LotListComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(): void {
+    this.pageNow = 1;
     if (this.lots.length > 0) {
       this.pagesVsego();
       this.pagination();
