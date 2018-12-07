@@ -18,7 +18,7 @@ import { PlaceBetFormComponent } from './pages/lot/place-bet-form/place-bet-form
 const appRoutes : Routes = [
   { path : "", component : HomeComponent },
   { path : "auction", component : AuctionComponent },
-  { path : "auction/lot/:id", component : LotComponent, data: {hideSidebar: false} }
+  { path : "auction/lot/:id", component : LotComponent }
   // { path : "", component : AuctionComponent, data: {hideSidebar: true} },
   // { path : "", component : AuctionComponent },
   // { path : "auction/lot/:id", component : LotPageComponent }

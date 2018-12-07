@@ -21,8 +21,9 @@ export class HeaderComponent implements OnInit {
       this.toggleBurger();
     }
   }
-  
+
   ngOnInit() {
-  
+    // var a = document.querySelector("nav span::before");
+    // a.addEventListener("click", this.removeTask);
   }
 }

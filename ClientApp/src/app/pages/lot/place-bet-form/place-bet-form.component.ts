@@ -12,7 +12,7 @@ export class PlaceBetFormComponent {
 
   @Output() addBet = new EventEmitter();
 
-  constructor(private AucSer: AuctionService) { }
+  constructor() { }
 
   onSubmit(event) {
     this.addBet.emit(event);

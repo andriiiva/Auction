@@ -23,14 +23,14 @@
     }
 
         aside {
-            flex: 1;
-            min-width: 300px;
-            width: 300px;
+            flex: 0 0 300px;
+            // min-width: 300px;
+            // width: 300px;
             margin-bottom: 10px;
         }
 
         section {
-            flex: 3;
+            flex: 1;
             display: flex;
             flex-flow: column nowrap;
             min-width:0;
@@ -66,4 +66,7 @@
                 display: none;
             }
 
+            section {
+                max-width: 100%;
+            }
     }
