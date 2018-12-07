@@ -1,3 +1,5 @@
+@import "../../../styles.scss";
+
 :host {
     display: block;
     background-color: azure;
@@ -7,5 +9,30 @@
 }
 
 :host > button {
+    @extend .btn, .btn-secondary;
     display: block;
+}
+
+:host {
+    > table {
+        @extend .table;
+        > thead {
+            @extend .table-secondary;
+        }
+        tr {
+            @extend .text-center;
+        }
+    }
+}
+
+:host {
+    > article {
+        display: flex;
+        > img {
+            flex: 1;
+        }
+        > section{
+            flex: 1;
+        } 
+    }
 }

@@ -1,13 +1,6 @@
 export interface Lot {
     name: string;
     startPrice: number;
+    description: string;
+    userId: number;
 }
-// export class Lot {
-//     name: string;
-//     price: number;
-//     constructor(name: string, price: number){
-//         this.name = name;
-//         this.price = price;
-//     }
-// }
-

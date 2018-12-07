@@ -27,16 +27,27 @@ namespace AuctionProject.Controllers
         [HttpPost]
         public ActionResult addLot([FromBody] Lot lot)
         {
-            _context.Lots.Add(lot);
-            _context.SaveChanges();
-            return Ok(lot);
-        }
+            if (ModelState.IsValid) {
+                _context.Lots.Add(lot);
+                _context.SaveChanges();
+                return Ok(_context.Lots.Include(l => l.User).SingleOrDefault(l => l.Id == lot.Id));
+            }
 
+            return UnprocessableEntity(ModelState);
+        }
 
         [HttpGet("lot/{id}")]
         public IActionResult Lot(int id) {
             var lot = _context.Lots.Find(id);
-            return Ok(lot);
+            return Ok(_context.Lots.Include(l => l.Bids).ThenInclude(b => b.User).SingleOrDefault(l => l.Id == lot.Id));
+        }
+
+        [HttpPost("lot")]
+        public ActionResult addBid([FromBody] Bid bid)
+        {
+            _context.Bids.Add(bid);
+            _context.SaveChanges();
+            return Ok(_context.Bids.Include(l => l.User).SingleOrDefault(b => b.Id == bid.Id));
         }
     }
 }

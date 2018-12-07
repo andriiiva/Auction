@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Lot } from 'src/app/shared/lot.model';
+import { Bid } from 'src/app/shared/bid.model';
 import { AuctionService } from 'src/app/auction.service';
 
 @Component({
@@ -17,7 +17,13 @@ export class LotComponent implements OnInit {
 
   ngOnInit() {
     this.id = +this.route.snapshot.paramMap.get('id');
-    this.AucSer.getLot(this.id).subscribe(data => this.lot = data);
+    this.AucSer.getLot(this.id).subscribe(data => {this.lot = data; this.lot.bids.reverse()});
   }
+
+  placeBet(event) {
+    this.AucSer.addBid({price: event.value.price, 
+                        userId: event.value.userId, 
+                        lotId: this.id} as Bid).subscribe(a => {this.lot.bids.unshift(a)});
+    }
 
 }

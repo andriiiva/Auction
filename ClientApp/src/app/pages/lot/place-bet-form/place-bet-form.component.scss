@@ -1,0 +1,22 @@
+@import "../../../../styles.scss";
+
+:host > div {
+    @extend .container-fluid;
+    > div {
+        @extend .row, .justify-content-center, .align-items-center;
+        > form {
+            > div {
+                display: flex;
+                @extend .form-row, .mb-1;
+                > input {
+                    flex: 1;
+                    @extend .form-control;
+                }
+                > button {
+                    flex: 1;
+                    @extend .btn, .btn-secondary, .mb-2;
+                }
+            }
+        }
+    }
+}

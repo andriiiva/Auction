@@ -11,7 +11,7 @@
     <div class="lot-details">
       <div class="lot-details-left">
           <section>
-            <span>{{lot.name}}</span>
+            <span><a [routerLink]="[ '/auction/lot/', lot.id ]">{{lot.name}}</a></span>
             <span>{{lot.description}}</span>
           </section>
           <span>by {{lot.user.name}}</span>

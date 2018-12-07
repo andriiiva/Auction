@@ -1,4 +1,5 @@
 using System;
+
 namespace AuctionProject.Models
 {
     public class Bid
@@ -13,10 +14,11 @@ namespace AuctionProject.Models
         public Bid()
         {
         }
-        public Bid(int price, int userId)
+        public Bid(int price, int userId, int lotId)
         {
             this.Price = price;
             this.UserId = userId;
+            this.LotId = lotId;
         }
 
         public int NextMinBid()

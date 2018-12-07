@@ -1,0 +1,15 @@
+<div>
+  <div>
+    <form (ngSubmit)="onSubmit(PlaceBidForm)" #PlaceBidForm="ngForm">
+      <div>
+        <input type="number" [(ngModel)]="price" name="price" placeholder="Lot price">
+      </div>
+      <div>
+        <input type="number" [(ngModel)]="userId" name="userId" placeholder="UserId">
+      </div>
+      <div>
+        <button type="submit">PLACE A BET</button>
+      </div>
+    </form>
+  </div>
+</div>

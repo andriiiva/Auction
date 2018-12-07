@@ -13,11 +13,12 @@ import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { ExtraContentComponent } from './layout/extra-content/extra-content.component';
 import { LotComponent } from './pages/lot/lot.component';
+import { PlaceBetFormComponent } from './pages/lot/place-bet-form/place-bet-form.component';
 
 const appRoutes : Routes = [
   { path : "", component : HomeComponent },
   { path : "auction", component : AuctionComponent },
-  { path : "auction/lot/:id", component : LotComponent }
+  { path : "auction/lot/:id", component : LotComponent, data: {hideSidebar: false} }
   // { path : "", component : AuctionComponent, data: {hideSidebar: true} },
   // { path : "", component : AuctionComponent },
   // { path : "auction/lot/:id", component : LotPageComponent }
@@ -35,6 +36,7 @@ const appRoutes : Routes = [
     FooterComponent,
     ExtraContentComponent,
     LotComponent,
+    PlaceBetFormComponent,
   ],
   imports: [
     BrowserModule,

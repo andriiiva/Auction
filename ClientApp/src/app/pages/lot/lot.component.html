@@ -1,10 +1,25 @@
-<p>
-  {{id}}
-</p>
-<p>
-  {{lot?.id}}{{lot?.name}}
-</p>
+<article>
+  <img src="https://semantic-ui.com/images/wireframe/image.png">
+  <section>
+  </section>
+</article>
 
-кто сумма 
+<table>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Bet</th>
+      <th scope="col">User</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let bid of lot?.bids; let i = index">
+      <td>{{lot?.bids.length - i}}</td>
+      <td>{{bid.price}}</td>
+      <td>{{bid.user.name}}</td>
+    </tr>
+  </tbody>
+</table>
 
-<button type="button" class="btn btn-secondary" [routerLink]="[ '/auction/' ]">Back</button>
+<app-place-bet-form (addBet)="placeBet($event)"></app-place-bet-form>
+<button type="button" [routerLink]="[ '/auction/' ]">Back</button>

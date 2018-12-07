@@ -22,7 +22,7 @@ export class AuctionComponent implements OnInit{
     this.AucSer.addLot({name: event.value.name, 
                         startPrice: event.value.startPrice, 
                         description: event.value.description,
-                        userId: event.value.userId} as Lot).subscribe(a =>  {this.lots.unshift(a); this.lots = this.lots.slice()});
+                        userId: event.value.userId} as Lot).subscribe(a => {this.lots.unshift(a as Lot); this.lots = this.lots.slice()});
   } 
 
 }

@@ -9,6 +9,7 @@
     flex-flow: row wrap;
     border-radius: 5px;
     overflow: hidden;
+    font-size: 20px;
 }
 
 .lot-item {
@@ -28,6 +29,7 @@
     display: flex;
     flex-wrap: wrap;
     flex: 2;
+    min-width: 350px;
 }
 
 .lot-details-left {
@@ -43,9 +45,31 @@
     }
 
         .lot-details-left > section > span {
-            height: 50px;
-            max-height: 50px;
+            height: 65px;
             overflow: hidden;
+        }
+
+        .lot-details-left > section > span:nth-child(1) {
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+            .lot-details-left > section > span:nth-child(1) > a{
+                color: black;
+                outline: none;
+                transition: all 1000ms ease; 
+            }
+
+                .lot-details-left > section > span:nth-child(1) > a:hover {
+                    font-weight: 600;
+                    color: #4161ff;
+                    outline: none;
+                    text-decoration: none;
+                    transition: all 500ms ease; 
+                }
+
+        .lot-details-left > section > span:nth-child(2) {
+            color: rgba(0, 0, 0, 0.6);
         }
 
     .lot-details-left > span {
@@ -71,6 +95,10 @@
 
 .lot-details span {
     display: block;
+}
+
+.lot-details span:nth-child(1) {
+    font-weight: 600;
 }
 
 button {
