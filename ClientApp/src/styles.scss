@@ -6,8 +6,10 @@ body{
     padding: 0;
 }
 
+$blue: #4161ff;
+
 a {
-    color: #4161ff;
+    color: $blue;
 }
 
 ul {

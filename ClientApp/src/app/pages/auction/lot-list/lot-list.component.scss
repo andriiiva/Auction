@@ -1,3 +1,4 @@
+@import "../../../../styles.scss";
 :host {
 }
 
@@ -62,7 +63,7 @@
 
                 .lot-details-left > section > span:nth-child(1) > a:hover {
                     font-weight: 600;
-                    color: #4161ff;
+                    color: $blue;
                     outline: none;
                     text-decoration: none;
                     transition: all 500ms ease; 
